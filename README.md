@@ -13,6 +13,7 @@ Install Vagrant (packages for Windows, Mac, Linux) 
 
 Assuming you have git :
 
-     $ git clone git@github.com:salgo/cakefest-vagrant-chef.git 
+    $ git clone git@github.com:salgo/cakefest-vagrant-chef.git 
     $ cd cakefest-vagrant-chef
+    $ ./git-fetch-submodules.sh
     $ vagrant up
