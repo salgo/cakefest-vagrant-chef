@@ -10,4 +10,5 @@ depends "openssl"
 depends "apache2"
 depends "mysql"
 # Hmmm
-depends "build-essential" 
+depends "build-essential"
+depends "apt" 
