@@ -36,6 +36,10 @@ Vagrant::Config.run do |config|
   # folder, and the third is the path on the host to the actual folder.
   # config.vm.share_folder "v-data", "/vagrant_data", "../data"
 
+  # Not nice but we are keeping our CakePHP code in /vagrant so need to 
+  # allow it all to be writable.
+  config.vm.share_folder("v-root", "/vagrant", ".", :extra => 'dmode=777,fmode=777')
+
   # Enable provisioning with Puppet stand alone.  Puppet manifests
   # are contained in a directory path relative to this Vagrantfile.
   # You will need to create the manifests directory and a manifest in
@@ -71,7 +75,11 @@ Vagrant::Config.run do |config|
     # chef.add_role "web"
     # You may also specify custom JSON attributes:
     chef.json = { :mysql => { :server_root_password => 'f3ad40ef59eb0067c2b16daa7613bd5e' },
-                  :cakephpapp => { :db => { :user => 'cakephpapp', 
+                  :cakephpapp => { :host => 'cakephpapp',
+                                   :user => 'www-data', 
+                                   :group => 'www-data',
+                                   :dir => '/vagrant/cakephpapp',
+                                   :db => { :user => 'cakephpapp', 
                                             :password => '5b15c5350ec09bb03513a97ec6703068',
                                             :database => 'cakephpapp' }}}
   end
